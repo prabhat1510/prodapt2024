@@ -1,4 +1,4 @@
-package classworkdaythree.interfaces;
+package classworkdaythree.multipleinheritance;
 
 public interface Payment {
 	//declaration
