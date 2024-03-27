@@ -1,5 +1,6 @@
 package layeredarchitectureexample.service;
 
+import layeredarchitectureexample.exceptions.CustomerNotFoundException;
 import layeredarchitectureexample.model.Customer;
 
 public interface CustomerService {
@@ -7,7 +8,7 @@ public interface CustomerService {
 	public String addCustomer(Customer customer);
 
 	// Retrieve
-	public Customer getCustomerById(Integer custId);
+	public Customer getCustomerById(Integer custId) throws CustomerNotFoundException;
 
 	// Update
 	public String updateCustomer(Customer customer);

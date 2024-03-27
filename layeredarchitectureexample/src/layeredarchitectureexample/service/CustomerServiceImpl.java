@@ -2,6 +2,7 @@ package layeredarchitectureexample.service;
 
 import layeredarchitectureexample.dao.CustomerDAO;
 import layeredarchitectureexample.dao.CustomerDAOImpl;
+import layeredarchitectureexample.exceptions.CustomerNotFoundException;
 import layeredarchitectureexample.model.Customer;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -14,9 +15,10 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer getCustomerById(Integer custId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer getCustomerById(Integer custId) throws CustomerNotFoundException {
+		CustomerDAO custDAO = new CustomerDAOImpl();
+		return custDAO.getCustomerById(custId);
+		//return null;
 	}
 
 	@Override

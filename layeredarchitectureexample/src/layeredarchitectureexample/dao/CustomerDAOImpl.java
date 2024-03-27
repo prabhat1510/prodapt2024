@@ -1,5 +1,6 @@
 package layeredarchitectureexample.dao;
 
+import layeredarchitectureexample.exceptions.CustomerNotFoundException;
 import layeredarchitectureexample.model.Customer;
 
 public class CustomerDAOImpl implements CustomerDAO {
@@ -11,9 +12,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public Customer getCustomerById(Integer custId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer getCustomerById(Integer custId) throws CustomerNotFoundException {
+		Customer cust = new Customer(1,"Rakhi");
+		if(custId == cust.getCustId()) {
+			return cust;
+		}else {
+			throw new CustomerNotFoundException("Customer with customer id --"+custId+" doesn't exists");
+		}
+		
 	}
 
 	@Override
