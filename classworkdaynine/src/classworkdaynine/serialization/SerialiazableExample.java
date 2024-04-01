@@ -34,7 +34,7 @@ public class SerialiazableExample {
 		// Write an object into a file system
 		File file = new File("D:\\prodapt2024\\output\\serializedObject.txt");
 		List<Employee> empList = new ArrayList<Employee>();
-		
+		//Employee[] arrayOfEmp = new Employee[4];
 		try (FileOutputStream fos = new FileOutputStream(file); 
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
 				FileInputStream fis = new FileInputStream(file);
