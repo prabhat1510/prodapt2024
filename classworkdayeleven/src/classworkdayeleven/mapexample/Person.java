@@ -62,6 +62,4 @@ public class Person {
 		return "Person [name=" + name + ", fatherName=" + fatherName + ", motherName=" + motherName + ", dateOfBirth="
 				+ dateOfBirth + ", address=" + address + ", ssn=" + ssn + "]";
 	}
-	
-	
 }
