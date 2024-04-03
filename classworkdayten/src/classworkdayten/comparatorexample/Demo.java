@@ -2,6 +2,7 @@ package classworkdayten.comparatorexample;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -42,6 +43,12 @@ public class Demo {
 		while(itrs.hasNext()) {
 			System.out.println(itrs.next());
 		}
+		
+		listOfEmployees.sort(new SalaryComparator());
+		//Since java 1.8 - no need to create a Custom Comparator class
+		//Here we are passing the Employee class property salary's method 
+		// reference in Comparator.comparing method 
+		Collections.sort(listOfEmployees, Comparator.comparing(Employee::getSalary));
 	}
 
 }
