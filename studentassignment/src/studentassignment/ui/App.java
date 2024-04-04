@@ -2,9 +2,12 @@ package studentassignment.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import studentassignment.exceptions.DataNotPresentException;
+import studentassignment.exceptions.StudentNotFoundException;
 import studentassignment.model.Student;
 import studentassignment.service.StudentService;
 import studentassignment.service.StudentServiceImpl;
@@ -56,6 +59,37 @@ public class App {
 			} catch (DataNotPresentException e) {
 				System.out.println(e.getMessage());
 			}
+		}
+		
+		//Read All Students from Data layer(or Data base or collection)
+		List<Student> studList=studentService.getAllStudents();
+		System.out.println(studList);
+		
+		//Name wise sorting
+		Collections.sort(studList,Comparator.comparing(Student::getName));
+		System.out.println(studList);
+		
+		//City wise sorting 
+		Collections.sort(studList,Comparator.comparing(Student::getCity));
+		System.out.println(studList);
+		//Get student by id 
+		try {
+			Student stu1 = studentService.getStudentById(11);
+			System.out.println(stu1);
+			Student stu2 = studentService.getStudentById(15);
+			System.out.println(stu2);
+		} catch (StudentNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Display All students from a particular city
+		try {
+			List<Student> stuList= studentService.getStudentByCity("Mumbai");
+			System.out.println(stuList);
+			List<Student> stuList1= studentService.getStudentByCity("Lucknow");
+			System.out.println(stuList1);
+		} catch (StudentNotFoundException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
