@@ -18,7 +18,8 @@ public class LoginServiceImpl implements LoginService {
 					return "User logged in successfully";
 				} else {
 					//throw new PasswordMismatchException();
-					throw new PasswordMismatchException("User details mismatch");
+					PasswordMismatchException passException = new  PasswordMismatchException("User details mismatch");
+					throw passException;
 				}
 			} else {
 				throw new UserNotFoundException();
