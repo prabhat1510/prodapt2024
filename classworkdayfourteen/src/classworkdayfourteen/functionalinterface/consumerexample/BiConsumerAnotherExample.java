@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.function.BiConsumer;
 
 public class BiConsumerAnotherExample {
@@ -45,8 +47,12 @@ public class BiConsumerAnotherExample {
 		BiConsumer<Employee,Integer> biCons = 
 				(k,v)->System.out.println("Employee id "+k.getEmpId()+" : age is "+v);
 		empAgeMap.forEach(biCons);
-
 		
+		/*
+		 * System.out.println("***********************************"); SortedSet<Integer>
+		 * values = new TreeSet<Integer>(empAgeMap.values());
+		 * System.out.println(values);
+		 */		
 	}
 	private static Integer calculateAge(LocalDate dateOfBirth) {
 		LocalDate currentDate = LocalDate.now();
