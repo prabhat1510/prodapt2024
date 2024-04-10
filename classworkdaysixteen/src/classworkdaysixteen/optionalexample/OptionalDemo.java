@@ -78,7 +78,10 @@ public class OptionalDemo {
 	}
 	
 	private static Optional<Integer> max(List<Integer> listOfIntegers) {
-		Collections.sort(listOfIntegers.reversed());
+		//Collections.sort(listOfIntegers.reversed());//Java 21 it will work
+		//For Java 17 below code will work
+		Collections.sort(listOfIntegers);
+		Collections.reverse(listOfIntegers);
 		Optional<Integer> max = Optional.of(listOfIntegers.get(0));
 		return max;
 	}

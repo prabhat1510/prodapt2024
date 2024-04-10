@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class WriteOrderObjectInAFile {
@@ -108,7 +111,23 @@ public class WriteOrderObjectInAFile {
 	                .max(Comparator.comparing(Order::getAmount)));
 	        System.out.println("***********************************************************************************");
 	        
-	        System.out.println("*********************max example***************************************");
+	        System.out.println("*******************************Get NON EURO Currency Orders****************************************************");
+	        List<Order> nonEUROOrders = orderList.stream()
+	                .filter(o -> !(o.getCurrency().equals("EUR")))
+	                .collect(Collectors.toList());
+	        nonEUROOrders.forEach(System.out::println);
+	        
+	        System.out.println("********************************Group Order Currency wise***************************************************");
+	        // Another example of Collectors.groupBy method
+	        Map<String, List<Order>> filteredOrders = orderList.stream().
+	                collect(Collectors.groupingBy(Order::getCurrency));
+
+	        System.out.println(filteredOrders);
+
+	        System.out.println("*******************************Use of distinct*************************************************");
+	        Stream<Integer> stInt = Stream.of(15,11,13,15,10,11);
+	        stInt.distinct().forEach(System.out::println);
+	        
 		} catch (FileNotFoundException fnfe) {
 
 			System.out.println(fnfe.getClass() + "---------------" + fnfe.getMessage());
