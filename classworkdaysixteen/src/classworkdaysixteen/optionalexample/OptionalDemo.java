@@ -1,6 +1,7 @@
 package classworkdaysixteen.optionalexample;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +25,12 @@ public class OptionalDemo {
 		if(minValue.isPresent()) {
 			System.out.println(minValue.get());
 		}
+		
+		
+		Optional<Integer> maxValue =max(listOfIntegers);
+		if(maxValue.isPresent()) {
+			System.out.println(maxValue.get());
+		}
 	}
 
 	private static Optional<Integer> search(List<Integer> listOfIntegers, Integer number) {
@@ -42,10 +49,11 @@ public class OptionalDemo {
 
 	private static Optional<Integer> min(List<Integer> listOfIntegers) {
 		Integer temp = 0;
+		//Converting list into array
 		int[] nums = listOfIntegers.stream()
-	            .mapToInt(Integer::intValue)
+	            .mapToInt(Integer::intValue)//Converting Integer into IntStream
 	            .toArray();
-		
+		//Bubble Sort
 		for (int firstIndex = 0; firstIndex < listOfIntegers.size(); firstIndex++) {
 			for (int secondIndex = firstIndex + 1; secondIndex < listOfIntegers.size(); secondIndex++) {
 				if(nums[firstIndex] > nums[secondIndex]) {
@@ -57,10 +65,21 @@ public class OptionalDemo {
 			}
 
 		}
-
+		
+		//After sorting in get value from 0 index position    
 		Optional<Integer> min = Optional.of(nums[0]);
 		return min;
-		
+		/**
+		Collections.sort(listOfIntegers);
+		Optional<Integer> min = Optional.of(listOfIntegers.get(0));
+		return min;
+		*/
 
+	}
+	
+	private static Optional<Integer> max(List<Integer> listOfIntegers) {
+		Collections.sort(listOfIntegers.reversed());
+		Optional<Integer> max = Optional.of(listOfIntegers.get(0));
+		return max;
 	}
 }
