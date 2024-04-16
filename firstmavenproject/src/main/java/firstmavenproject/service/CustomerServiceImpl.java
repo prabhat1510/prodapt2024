@@ -1,5 +1,6 @@
 package firstmavenproject.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import firstmavenproject.dao.CustomerDAO;
@@ -35,6 +36,19 @@ public class CustomerServiceImpl implements CustomerService {
 	public Optional<String> deleteCustomer(Integer customerId) throws CustomerNotFoundException {
 		CustomerDAO custDAO = new CustomerDAOImpl();
 		return custDAO.deleteCustomer(customerId);
+	}
+
+	@Override
+	public List<Customer> getAllCustomer() throws CustomerNotFoundException {
+		CustomerDAO custDAO = new CustomerDAOImpl();
+		return custDAO.getAllCustomer();
+	}
+
+	@Override
+	public Optional<Customer> getCustomerByName(String customerName) throws CustomerNotFoundException {
+		CustomerDAO custDAO = new CustomerDAOImpl();
+		return custDAO.getCustomerByName(customerName);
+		
 	}
 
 }

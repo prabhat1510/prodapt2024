@@ -5,6 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import firstmavenproject.exception.CustomerNotFoundException;
@@ -60,22 +63,25 @@ public class CustomerDAOImpl implements CustomerDAO {
 		conn = DBConnectionUtil.getDBConnection();
 		Customer customer = new Customer();
 		try {
-			preparedStatement = conn.prepareStatement("SELECT * FROM CUSTOMER WHERE customerId=?");
+			// JDBC statement is created
+			preparedStatement = conn.prepareStatement(QUERYMAPPER.GET_CUSTOMER_BY_ID);
 			preparedStatement.setInt(1, customerId);
 
+			// Statement is executed and it returns ResultSet
 			ResultSet rs = preparedStatement.executeQuery();
-			if(rs.next()) {
+			// Retrieve Customer object data from ResulSet
+			if (rs.next()) {
 				// Setting data from resultset to domain object in application
-				customer.setCustomerId(rs.getInt(1));//getting the value using column index
+				customer.setCustomerId(rs.getInt(1));// getting the value using column index
 				customer.setCustomerName(rs.getString("customerName"));
-				customer.setEmail(rs.getString("email"));//getting the value using column name
+				customer.setEmail(rs.getString("email"));// getting the value using column name
 				customer.setMobile(rs.getLong("mobile"));
-				customer.setBirthDate(rs.getDate(3).toLocalDate());//getting the value using column index
+				customer.setBirthDate(rs.getDate(3).toLocalDate());// getting the value using column index
 			}
+			// Closing the resources
 			conn.close();
 			preparedStatement.close();
-			
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,6 +124,72 @@ public class CustomerDAOImpl implements CustomerDAO {
 		} else {
 			return Optional.of("Unable to delete a record");
 		}
+	}
+
+	@Override
+	public List<Customer> getAllCustomer() throws CustomerNotFoundException {
+		List<Customer> customerList = new ArrayList<Customer>();
+		Connection conn = null;
+		Statement stmt = null;
+		// Get a connection object
+		conn = DBConnectionUtil.getDBConnection();
+		try {
+			// Create a Statement
+			stmt = conn.createStatement();
+			// Execute a statement
+			ResultSet resultSet = stmt.executeQuery("SELECT * FROM CUSTOMER");
+			// Process the resultset
+			while (resultSet.next()) {
+				Customer customer = new Customer();
+				customer.setCustomerId(resultSet.getInt(1));
+				customer.setCustomerName(resultSet.getString("customerName"));
+				customer.setEmail(resultSet.getString("email"));
+				customer.setMobile(resultSet.getLong("mobile"));
+				customer.setBirthDate(resultSet.getDate(3).toLocalDate());
+
+				customerList.add(customer);
+			}
+			conn.close();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return customerList;
+	}
+
+	@Override
+	public Optional<Customer> getCustomerByName(String customerName) throws CustomerNotFoundException {
+		Connection conn = null;
+		PreparedStatement preparedStatement = null;
+		conn = DBConnectionUtil.getDBConnection();
+		Customer customer = new Customer();
+		try {
+			// JDBC statement is created
+			preparedStatement = conn.prepareStatement(QUERYMAPPER.GET_CUSTOMER_BY_ID);
+			preparedStatement.setString(1, customerName);
+
+			// Statement is executed and it returns ResultSet
+			ResultSet rs = preparedStatement.executeQuery();
+			// Retrieve Customer object data from ResulSet
+			if (rs.next()) {
+				// Setting data from resultset to domain object in application
+				customer.setCustomerId(rs.getInt(1));// getting the value using column index
+				customer.setCustomerName(rs.getString("customerName"));
+				customer.setEmail(rs.getString("email"));// getting the value using column name
+				customer.setMobile(rs.getLong("mobile"));
+				customer.setBirthDate(rs.getDate(3).toLocalDate());// getting the value using column index
+			}
+			// Closing the resources
+			conn.close();
+			preparedStatement.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return Optional.of(customer);
 	}
 
 }
