@@ -6,6 +6,7 @@ import java.util.Optional;
 import firstmavenproject.dao.CustomerDAO;
 import firstmavenproject.dao.CustomerDAOImpl;
 import firstmavenproject.exception.CustomerNotFoundException;
+import firstmavenproject.exception.OperationNotExecutedException;
 import firstmavenproject.model.Customer;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -49,6 +50,12 @@ public class CustomerServiceImpl implements CustomerService {
 		CustomerDAO custDAO = new CustomerDAOImpl();
 		return custDAO.getCustomerByName(customerName);
 		
+	}
+
+	@Override
+	public String addCustomerUsingSP(Customer customer) throws OperationNotExecutedException {
+		CustomerDAO custDAO = new CustomerDAOImpl();
+		return custDAO.addCustomerUsingSP(customer);
 	}
 
 }

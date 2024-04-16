@@ -1,9 +1,11 @@
 package firstmavenproject.ui;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import firstmavenproject.exception.CustomerNotFoundException;
+import firstmavenproject.exception.OperationNotExecutedException;
 import firstmavenproject.model.Customer;
 import firstmavenproject.service.CustomerService;
 import firstmavenproject.service.CustomerServiceImpl;
@@ -67,6 +69,20 @@ public class MainDemo {
 			e.printStackTrace();
 		}
 		System.out.println(customerList);
+
+		System.out.println("**************************Insert customer using SP************************************");
+		Customer customer1 = new Customer(4, "Rakul Preet Singh", LocalDate.of(1988, 7, 11), 9988883333L,
+				"rakul@gmail.com");
+		CustomerService service1 = new CustomerServiceImpl();
+		String message1 = null;
+		try {
+			message1 = service1.addCustomerUsingSP(customer1);
+		} catch (OperationNotExecutedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(message1);
+
 	}
 
 }

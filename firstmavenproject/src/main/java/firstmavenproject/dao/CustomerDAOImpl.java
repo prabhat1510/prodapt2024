@@ -1,5 +1,6 @@
 package firstmavenproject.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 import firstmavenproject.exception.CustomerNotFoundException;
+import firstmavenproject.exception.OperationNotExecutedException;
 import firstmavenproject.model.Customer;
 import firstmavenproject.util.DBConnectionUtil;
 import firstmavenproject.util.QUERYMAPPER;
@@ -50,21 +52,20 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 
 		if (row != 0) {
-			return "Record inserted successfully";
+			return QUERYMAPPER.RECORD_INSERTED_SUCCESSFULLY;
 		} else {
-			return "Unable to insert a record";
+			return QUERYMAPPER.UNABLE_TO_INSERT_A_RECORD;
 		}
 	}
 
 	@Override
 	public Optional<Customer> getCustomerById(Integer customerId) throws CustomerNotFoundException {
-		Connection conn = null;
-		PreparedStatement preparedStatement = null;
-		conn = DBConnectionUtil.getDBConnection();
+
 		Customer customer = new Customer();
-		try {
+		try (Connection conn = DBConnectionUtil.getDBConnection();
 			// JDBC statement is created
-			preparedStatement = conn.prepareStatement(QUERYMAPPER.GET_CUSTOMER_BY_ID);
+			PreparedStatement preparedStatement = conn.prepareStatement(QUERYMAPPER.GET_CUSTOMER_BY_ID);) {
+
 			preparedStatement.setInt(1, customerId);
 
 			// Statement is executed and it returns ResultSet
@@ -79,8 +80,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 				customer.setBirthDate(rs.getDate(3).toLocalDate());// getting the value using column index
 			}
 			// Closing the resources
-			conn.close();
-			preparedStatement.close();
+			// conn.close();
+			// preparedStatement.close();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -120,9 +121,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 
 		if (row != 0) {
-			return Optional.of("Record deleted successfully");
+			return Optional.of(QUERYMAPPER.RECORD_DELETED_SUCCESSFULLY);
 		} else {
-			return Optional.of("Unable to delete a record");
+			return Optional.of(QUERYMAPPER.UNABLE_TO_DELETE_A_RECORD);
 		}
 	}
 
@@ -137,7 +138,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			// Create a Statement
 			stmt = conn.createStatement();
 			// Execute a statement
-			ResultSet resultSet = stmt.executeQuery("SELECT * FROM CUSTOMER");
+			ResultSet resultSet = stmt.executeQuery(QUERYMAPPER.GET_ALL_CUSTOMERS);
 			// Process the resultset
 			while (resultSet.next()) {
 				Customer customer = new Customer();
@@ -190,6 +191,28 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 
 		return Optional.of(customer);
+	}
+	
+	public String addCustomerUsingSP(Customer customer) throws OperationNotExecutedException{
+		boolean success = false;
+		try {
+			CallableStatement cstmt = DBConnectionUtil.getDBConnection().prepareCall("{call add_customer(?,?,?,?,?)}");
+			cstmt.setInt(1, customer.getCustomerId());
+			cstmt.setString(2, customer.getCustomerName());
+			cstmt.setDate(3, Date.valueOf(customer.getBirthDate()));
+			cstmt.setLong(4, customer.getMobile());
+			cstmt.setString(5, customer.getEmail());
+			success = cstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(success) {
+			return "Stored Procedure executed succefully";
+		}else {
+			throw new OperationNotExecutedException("Stored Procedure execution gave error");
+		}
 	}
 
 }

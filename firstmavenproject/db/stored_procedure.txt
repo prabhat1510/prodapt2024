@@ -1,0 +1,5 @@
+DELIMITER $$
+CREATE PROCEDURE `add_customer` (custid INT,custname varchar(45),birthDate date,mobile BIGINT,email varchar(45))
+BEGIN
+	 INSERT INTO CUSTOMER VALUES(custid,custname,birthDate,mobile,email);
+END$$

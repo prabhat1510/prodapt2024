@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import firstmavenproject.exception.CustomerNotFoundException;
+import firstmavenproject.exception.OperationNotExecutedException;
 import firstmavenproject.model.Customer;
 
 public interface CustomerService {
@@ -21,4 +22,7 @@ public interface CustomerService {
 	
 	//Retrieve By customer name
 	public Optional<Customer> getCustomerByName(String customerName) throws CustomerNotFoundException;
+	
+	//Using stored procedure
+	public String addCustomerUsingSP(Customer customer) throws OperationNotExecutedException;
 }
