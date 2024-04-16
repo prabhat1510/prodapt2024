@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLTimeoutException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -194,7 +195,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 	
 	public String addCustomerUsingSP(Customer customer) throws OperationNotExecutedException{
-		boolean success = false;
+		int row =0;
 		try {
 			CallableStatement cstmt = DBConnectionUtil.getDBConnection().prepareCall("{call add_customer(?,?,?,?,?)}");
 			cstmt.setInt(1, customer.getCustomerId());
@@ -202,13 +203,19 @@ public class CustomerDAOImpl implements CustomerDAO {
 			cstmt.setDate(3, Date.valueOf(customer.getBirthDate()));
 			cstmt.setLong(4, customer.getMobile());
 			cstmt.setString(5, customer.getEmail());
-			success = cstmt.execute();
-			
-		} catch (SQLException e) {
+			//success = cstmt.execute();//execute() method was returning false after executing stored procedure successfully
+			row = cstmt.executeUpdate();
+		}catch(SQLTimeoutException ste) {
+			ste.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(success) {
+		if(row !=0) {
 			return "Stored Procedure executed succefully";
 		}else {
 			throw new OperationNotExecutedException("Stored Procedure execution gave error");

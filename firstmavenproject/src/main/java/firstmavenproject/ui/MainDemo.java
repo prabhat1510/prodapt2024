@@ -24,7 +24,7 @@ public class MainDemo {
 		// Delete record
 		System.out.println("**************************Delete record by id ************************************");
 		CustomerService service = new CustomerServiceImpl();
-		Optional<String> message = Optional.empty();
+		/**Optional<String> message = Optional.empty();
 		try {
 			message = service.deleteCustomer(4);
 		} catch (CustomerNotFoundException e) {
@@ -33,7 +33,7 @@ public class MainDemo {
 		}
 		if (message.isPresent()) {
 			System.out.println(message.get());
-		}
+		}**/
 
 		System.out.println("**************************Retrieve customer by id************************************");
 		// Retrieve customer by id
@@ -71,7 +71,7 @@ public class MainDemo {
 		System.out.println(customerList);
 
 		System.out.println("**************************Insert customer using SP************************************");
-		Customer customer1 = new Customer(4, "Rakul Preet Singh", LocalDate.of(1988, 7, 11), 9988883333L,
+		Customer customer1 = new Customer(4, "Rakul", LocalDate.of(1982, 7, 11), 9988884575L,
 				"rakul@gmail.com");
 		CustomerService service1 = new CustomerServiceImpl();
 		String message1 = null;
