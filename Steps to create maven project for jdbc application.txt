@@ -1,0 +1,52 @@
+Steps to Create a JDBC based java application
+1.File->New->Project->Select Maven Project
+2.Check skip archtype selection check box
+3.Next window mention groupId as com.prodapt
+	-artifactId as <Name of the Project or Jar file>
+	-version as default
+	-Packaging as Jar
+	-Name as <Name of the Project>
+	-Description as <Information about the project>
+4. Click finish
+5. After step 4 maven project will be created in IDE
+6. Add maven depenency for lombok and mysql connector in pom.xml inside dependencies
+7. Now create different packages for application
+	-com.prodapt.<nameoftheproject>.ui
+	-com.prodapt.<nameoftheproject>.exceptions
+	-com.prodapt.<nameoftheproject>.util
+	-com.prodapt.<nameoftheproject>.dao
+	-com.prodapt.<nameoftheproject>.service
+	-com.prodapt.<nameoftheproject>.data or model or dto
+8. Create data model class or POJO class in appropriate package
+	For example Customer class in data package
+				Add appropriate fields and annotation for	
+				Getter,Setter,ToString,NoArgConstructor,AllArgConstructor etc
+				If not using lombok then generate Getter/Setter and Constructors 
+				and toString method code
+9. Create Interface for Service and DAO layer corresponding to your data models
+	For Example : CustomerService and CustomerDAO in respective packages
+10.Add CRUD operation related methods(abstract methods)
+11.Implement DAO layer interface
+12.Implement Service layer interface
+13. Create Custom Exception classes in exceptions package
+	For Example : 
+		public class CustomerNotFoundException extends Exception{}
+14.Create Connection utility class in util package which will return Connection object
+15.Create Query Mapper in util packages to manage the queries and other constants
+16.In implementation class of DAO layer write appropriate logic to perform CRUD operations
+   using Connection object call appropriate statement (Statement or PrepareStatement or CallableStatment)
+17.Make sure to close the resources or you can use try-with resources syntax for autoclosing the resources
+18.Create a main class with main method in ui package.
+19. Create an object of service class
+		For Example: CustomerService service= new CustomerServiceImpl();
+20. Prepare data for create operation
+		For example : Customer cust = new Customer(1,"ABC");
+21. Make a call to service class methods as per requirement
+		For example: 
+			To insert record or data
+				service.addCustomer(cust);
+22. As per your data model you need create table in database
+
+
+	
+	
