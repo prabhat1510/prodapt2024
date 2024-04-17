@@ -32,6 +32,12 @@ public class Demo {
 		 * 
 		 * Must use parenthesis () while using the var with the parameters.
 		 */
+		
+		/**
+		String entry = "Book Title:Unseen";//1 object
+		String catalogEntry="Book"+" Title:"+"Unseen" ;//3 object
+		String displayEntry="Book "+"Title: "+"Unseen" ;//1
+		String reportEntry = "Book Title:"+"Unseen";**/
 	}
 
 }
