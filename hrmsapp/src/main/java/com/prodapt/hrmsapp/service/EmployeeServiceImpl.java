@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.prodapt.hrmsapp.dao.EmployeeDAO;
 import com.prodapt.hrmsapp.dao.EmployeeDAOImpl;
 import com.prodapt.hrmsapp.exceptions.EmployeeNotFoundException;
+import com.prodapt.hrmsapp.exceptions.OperationNotExecutedException;
 import com.prodapt.hrmsapp.model.Employee;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -44,6 +45,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Optional<Employee> getEmployeeByName(String employeeName) throws EmployeeNotFoundException {
 		// TODO Auto-generated method stub
 		return Optional.empty();
+	}
+
+	@Override
+	public String insertEmployeeAndDepartment(Employee employee) throws OperationNotExecutedException {
+		EmployeeDAO dao = new EmployeeDAOImpl();
+		return dao.insertEmployeeAndDepartment(employee);
 	}
 
 }

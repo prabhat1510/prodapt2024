@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.prodapt.hrmsapp.exceptions.EmployeeNotFoundException;
+import com.prodapt.hrmsapp.exceptions.OperationNotExecutedException;
 import com.prodapt.hrmsapp.model.Employee;
 
 public interface EmployeeService {
@@ -25,4 +26,6 @@ public interface EmployeeService {
 	// Retrieve By Employee name
 	public Optional<Employee> getEmployeeByName(String employeeName) throws EmployeeNotFoundException;
 
+	//insertEmployeeAndDepartment
+	public String insertEmployeeAndDepartment(Employee employee) throws OperationNotExecutedException;
 }
