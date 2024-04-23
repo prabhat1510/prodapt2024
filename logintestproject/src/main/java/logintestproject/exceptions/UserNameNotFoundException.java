@@ -1,11 +1,10 @@
 package logintestproject.exceptions;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class UserNameNotFoundException extends Exception{
-
-	public UserNameNotFoundException() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	public UserNameNotFoundException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);

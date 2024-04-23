@@ -11,7 +11,12 @@ import logintestproject.util.DBConnectionUtil;
 import logintestproject.util.QUERYMAPPER;
 
 public class LoginDAOImpl implements LoginDAO {
-
+	
+	/**
+	 *  create table login(userName varchar(20) PRIMARY KEY,password varchar(30));
+	 *  insert into login values('admin','password');
+	 *  insert into login values('user','password123');
+	 */
 	@Override
 	public Login getLoginDetails(String userName) throws UserNameNotFoundException {
 		Connection conn = DBConnectionUtil.getDBConnection();
