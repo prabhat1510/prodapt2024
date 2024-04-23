@@ -7,7 +7,7 @@ public class Factory {
 	synchronized int get() {
 		if(valueSet) {
 			try {
-				wait();
+				wait(1500);
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
@@ -30,7 +30,7 @@ public class Factory {
 	synchronized void put(int n) {
 		if(!valueSet) {
 			try {
-				wait();
+				wait(2000);
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
