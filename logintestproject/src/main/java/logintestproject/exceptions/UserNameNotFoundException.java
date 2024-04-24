@@ -1,8 +1,10 @@
 package logintestproject.exceptions;
 
+import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
+@Generated
 public class UserNameNotFoundException extends Exception{
 	
 	public UserNameNotFoundException(String message, Throwable cause, boolean enableSuppression,

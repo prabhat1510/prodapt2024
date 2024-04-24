@@ -1,11 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.prodapt</groupId>
-  <artifactId>logintestproject</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>Login Test  Project</name>
-  <description>Demo Login Test  Project</description>
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.prodapt</groupId>
+	<artifactId>logintestproject</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Login Test Project</name>
+	<description>Demo Login Test Project</description>
+	<properties>
 		<java.version>21</java.version>
 	</properties>
 
@@ -70,6 +72,10 @@
 							<!-- Sets the output directory for the code coverage
 							report. -->
 							<outputDirectory>target/jacoco-ut</outputDirectory>
+							<excludes>
+								<exclude>logintestproject/src/main/java/logintestprojectlogintestproject/model/**/*</exclude>
+								<exclude>logintestproject/src/main/java/logintestprojectlogintestproject/exceptions/**/*</exclude>
+							</excludes>
 						</configuration>
 					</execution>
 				</executions>

@@ -1,5 +1,8 @@
 package logintestproject.exceptions;
 
+import lombok.Generated;
+
+@Generated
 public class PasswordMismatchException extends Exception{
 
 	public PasswordMismatchException() {

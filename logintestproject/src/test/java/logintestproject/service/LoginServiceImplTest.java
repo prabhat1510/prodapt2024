@@ -1,7 +1,8 @@
 package logintestproject.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,15 +31,45 @@ public class LoginServiceImplTest {
 		String actualMessage = null;
 		try {
 			actualMessage =loginService.verifyUserNameAndPassword(login);
-		} catch (UserNameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PasswordMismatchException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (UserNameNotFoundException | PasswordMismatchException e) {
+			assertNotEquals(expectedMessage,e.getMessage());
 		}
 		
 		assertEquals(expectedMessage, actualMessage);
+	}
+	
+	@Test
+	void testVerifyUserNameAndPasswordNotSuccess(){
+		login.setUserName("admin111");
+		login.setPassword("password");
+		String expectedMessage ="Details for username -- "+login.getUserName()+" not found in records";
+		
+		String actualMessage = null;
+		try {
+			actualMessage =loginService.verifyUserNameAndPassword(login);
+		} catch (UserNameNotFoundException e) {
+			assertEquals(expectedMessage,e.getMessage());
+		} catch (PasswordMismatchException e) {
+			assertEquals("Password for username " + login.getUserName() + "doesn't match with our record",e.getMessage());
+		}
+		
+		assertNotEquals(expectedMessage, actualMessage);
+	}
+	
+	@Test
+	void testVerifyUserNameAndPasswordUserNameNotFoundException() {
+		login.setUserName("admin111");
+		login.setPassword("password");
+		assertThrows(UserNameNotFoundException.class,()->loginService.verifyUserNameAndPassword(login));
+		
+	}
+	
+	@Test
+	void testVerifyUserNameAndPasswordPasswordMismatchException() {
+		login.setUserName("admin");
+		login.setPassword("password111");
+		assertThrows(PasswordMismatchException.class,()->loginService.verifyUserNameAndPassword(login));
+		
 	}
 	
 	@AfterEach
