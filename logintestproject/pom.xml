@@ -26,6 +26,24 @@
 			<version>5.10.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
 		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -73,8 +91,10 @@
 							report. -->
 							<outputDirectory>target/jacoco-ut</outputDirectory>
 							<excludes>
-								<exclude>logintestproject/src/main/java/logintestprojectlogintestproject/model/**/*</exclude>
-								<exclude>logintestproject/src/main/java/logintestprojectlogintestproject/exceptions/**/*</exclude>
+								<exclude>
+									logintestproject/src/main/java/logintestprojectlogintestproject/model/**/*</exclude>
+								<exclude>
+									logintestproject/src/main/java/logintestprojectlogintestproject/exceptions/**/*</exclude>
 							</excludes>
 						</configuration>
 					</execution>

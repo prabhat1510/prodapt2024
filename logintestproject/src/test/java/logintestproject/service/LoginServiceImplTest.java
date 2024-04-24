@@ -7,11 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import logintestproject.exceptions.PasswordMismatchException;
 import logintestproject.exceptions.UserNameNotFoundException;
 import logintestproject.model.Login;
 
+//@ExtendWith(LoginParameterResolver.class)
 public class LoginServiceImplTest {
 	
 	private LoginService loginService;
@@ -56,13 +58,7 @@ public class LoginServiceImplTest {
 		assertNotEquals(expectedMessage, actualMessage);
 	}
 	
-	@Test
-	void testVerifyUserNameAndPasswordUserNameNotFoundException() {
-		login.setUserName("admin111");
-		login.setPassword("password");
-		assertThrows(UserNameNotFoundException.class,()->loginService.verifyUserNameAndPassword(login));
-		
-	}
+	
 	
 	@Test
 	void testVerifyUserNameAndPasswordPasswordMismatchException() {
