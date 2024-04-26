@@ -2,7 +2,7 @@ package designpattern.chainofresp;
 
 public class Dollar10Dispenser implements DispenseChain {
 
-	private DispenseChain chain;
+private DispenseChain chain;
 	
 	@Override
 	public void setNextChain(DispenseChain nextChain) {
@@ -24,4 +24,6 @@ public class Dollar10Dispenser implements DispenseChain {
 
 	}
 
+
+	
 }
