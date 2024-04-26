@@ -6,7 +6,8 @@ public class App {
 	 * Composite design pattern is a partitioning design pattern. 
 	 * It describes that a group of objects is to be treated in the same way as a single
 	 * instance of an object.
-	 * The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies.
+	 * The intent of a composite is to "compose" objects into tree structures to represent 
+	 * part-whole hierarchies.
 	 * Implementing this pattern lets clients treat individual object as and compositions uniformly.
 	 * 
 	 * 
