@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="jpaapp.entities.Department" table="department">
+		<id name="deptNo">
+			<generator class="identity"></generator>
+		</id>
+		<property name="deptName" />
+		
+		 <set name="employees" table="employee" inverse="true" cascade="all" >
+            <key>
+                <column name="deptNo" />
+            </key>
+            <one-to-many class="jpaapp.entities.Employee" />
+        </set>
+		
+	</class>
+</hibernate-mapping>
