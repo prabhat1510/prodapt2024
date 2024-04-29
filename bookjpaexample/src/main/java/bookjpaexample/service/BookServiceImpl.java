@@ -58,16 +58,16 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public void updateBookUsingTypedQuery(int id, String name) {
+	public void updateBookUsingNormalQuery(int id, String name) {
 		BookDAO dao = new BookDAOImpl();
-		dao.updateBookUsingTypedQuery(id, name);
+		dao.updateBookUsingNormalQuery(id, name);
 		
 	}
 
 	@Override
-	public void updateBookUsingTQuery(Book book) {
+	public void updateBookUsingQuery(Book book) {
 		BookDAO dao = new BookDAOImpl();
-		dao.updateBookUsingTQuery(book);
+		dao.updateBookUsingQuery(book);
 		
 	}
 

@@ -37,7 +37,7 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
-	public void updateBookUsingTQuery(Book book) {
+	public void updateBookUsingQuery(Book book) {
 		em.getTransaction().begin();
 		Query query = em.createQuery("UPDATE Book book  SET book.bookName =:bookName where book.bookId=:bookId");
 		query.setParameter("bookId", book.getId());
@@ -48,7 +48,7 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
-	public void updateBookUsingTypedQuery(int id, String name) {
+	public void updateBookUsingNormalQuery(int id, String name) {
 		em.getTransaction().begin();
 		Query query = em.createQuery("UPDATE Book book  SET book.bookName =:bookName where book.bookId=:bookId");
 		query.setParameter("bookId", id);
