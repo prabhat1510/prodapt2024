@@ -7,4 +7,10 @@ public interface PlayerService {
 	public void addPlayer(Player player);
 	//Retrieve
 	public Player getPlayer(Integer playerId);
+	
+	//Update
+	public Player updatePlayer(Player player);
+	//Delete
+	public String deletePlayer(Integer playerId);
+	
 }

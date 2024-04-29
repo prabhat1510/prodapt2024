@@ -18,4 +18,16 @@ public class PlayerServiceImpl implements PlayerService {
 		return dao.getPlayer(playerId);
 	}
 
+	@Override
+	public Player updatePlayer(Player player) {
+		PlayerDAO dao = new PlayerDAOImpl();
+		return dao.updatePlayer(player);
+	}
+
+	@Override
+	public String deletePlayer(Integer playerId) {
+		PlayerDAO dao = new PlayerDAOImpl();
+		return dao.deletePlayer(playerId);
+	}
+
 }

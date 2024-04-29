@@ -22,9 +22,33 @@ public class PlayerDAOImpl implements PlayerDAO {
 	public Player getPlayer(Integer playerId) {
 		// Retrieving data in database using find method of EntityManager
 		em.getTransaction().begin();
-		Player player = em.find(Player.class, playerId);
+		Player player = em.find(Player.class,playerId);
 		em.getTransaction().commit();
 		return player;
+	}
+
+	@Override
+	public Player updatePlayer(Player player) {
+		em.getTransaction().begin();
+		//Write the update logic
+		em.merge(player);
+		em.getTransaction().commit();
+		return player;
+	}
+
+	@Override
+	public String deletePlayer(Integer playerId) {
+		em.getTransaction().begin();
+		Player player = em.find(Player.class,playerId);
+		if(player != null) {
+			em.remove(player);
+			em.getTransaction().commit();
+			return "Player with playerId "+playerId+" deleted successfully";
+
+		}else {
+			return "No record found so unable to delete";
+		}
+		
 	}
 
 }

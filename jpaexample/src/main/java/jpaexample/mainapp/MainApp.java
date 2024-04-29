@@ -6,18 +6,27 @@ import jpaexample.service.PlayerServiceImpl;
 
 public class MainApp {
 
+	/*
+	 * public static void main(String[] args) {
+	 * Player player = new Player(); 
+	 * //Team team = new Team(); 
+	 * player.setName("Kapil Dev"); 
+	 * player.setPlayerId(1);
+	 * //team.setName("Chennai SuperKings");
+	 * 
+	 * PlayerService service = new PlayerServiceImpl(); 
+	 * service.addPlayer(player);
+	 * 
+	 * //Player plyer = service.getPlayer(2); 
+	 * //System.out.println(plyer); }
+	 */
 	public static void main(String[] args) {
 		Player player = new Player();
-		//Team team = new Team();
-		player.setName("MS DHONI");
+		player.setPlayerId(1);
+		player.setName("Krishnamchari Srikant");
 		
-		//team.setName("Chennai SuperKings");
+		PlayerService service = new PlayerServiceImpl(); 
+		System.out.println(service.updatePlayer(player));
 		
-		PlayerService service = new PlayerServiceImpl();
-		service.addPlayer(player);
-		
-		Player plyer = service.getPlayer(1);
-		System.out.println(plyer);
-	}
-
+}
 }
