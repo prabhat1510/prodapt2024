@@ -6,6 +6,7 @@ import bookjpaexample.entities.Book;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 public class BookDAOImpl implements BookDAO {
@@ -35,6 +36,28 @@ public class BookDAOImpl implements BookDAO {
 		return book;
 	}
 
+	@Override
+	public void updateBookUsingTQuery(Book book) {
+		em.getTransaction().begin();
+		Query query = em.createQuery("UPDATE Book book  SET book.bookName =:bookName where book.bookId=:bookId");
+		query.setParameter("bookId", book.getId());
+		query.setParameter("bookName", book.getName());
+		int row = query.executeUpdate();
+		em.getTransaction().commit();
+		System.out.println("Number of updated row is ---"+row);
+	}
+
+	@Override
+	public void updateBookUsingTypedQuery(int id, String name) {
+		em.getTransaction().begin();
+		Query query = em.createQuery("UPDATE Book book  SET book.bookName =:bookName where book.bookId=:bookId");
+		query.setParameter("bookId", id);
+		query.setParameter("bookName", name);
+		int row = query.executeUpdate();
+		em.getTransaction().commit();
+		System.out.println("Number of updated row is ---"+row);
+		
+	}
 	@Override
 	public String deleteBook(Integer bookId) {
 		// TODO Auto-generated method stub

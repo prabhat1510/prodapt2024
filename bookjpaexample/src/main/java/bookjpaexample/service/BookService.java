@@ -26,4 +26,8 @@ public interface BookService {
 		public Book getBookUsingTypedQuery(Integer bookId);
 
 		public List<Book> getBooksUsingTypedQuery();
+		
+		public void updateBookUsingTypedQuery(int id, String name);
+
+		public void updateBookUsingTQuery(Book book);
 }	

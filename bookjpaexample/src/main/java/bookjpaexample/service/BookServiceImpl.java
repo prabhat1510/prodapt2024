@@ -57,4 +57,18 @@ public class BookServiceImpl implements BookService {
 		return dao.getBooksUsingTypedQuery();
 	}
 
+	@Override
+	public void updateBookUsingTypedQuery(int id, String name) {
+		BookDAO dao = new BookDAOImpl();
+		dao.updateBookUsingTypedQuery(id, name);
+		
+	}
+
+	@Override
+	public void updateBookUsingTQuery(Book book) {
+		BookDAO dao = new BookDAOImpl();
+		dao.updateBookUsingTQuery(book);
+		
+	}
+
 }
