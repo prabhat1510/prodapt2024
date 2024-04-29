@@ -53,5 +53,19 @@ public class BookDAOImpl implements BookDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Book getBookUsingTypedQuery(Integer bookId) {
+		TypedQuery<Book> query = em.createQuery("SELECT b from Book b where b.bookId=:bookId",Book.class);
+		query.setParameter("bookId", bookId);
+		return query.getSingleResult();
+		
+	}
+
+	@Override
+	public List<Book> getBooksUsingTypedQuery() {
+		TypedQuery<Book> query =em.createQuery("SELECT b from Book b", Book.class);
+		return query.getResultList();
+	}
 
 }

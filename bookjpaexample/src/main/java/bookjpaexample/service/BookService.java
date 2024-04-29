@@ -22,4 +22,8 @@ public interface BookService {
 		
 		//Get All Books
 		public List<Book> getAllBooks();
+		
+		public Book getBookUsingTypedQuery(Integer bookId);
+
+		public List<Book> getBooksUsingTypedQuery();
 }	
