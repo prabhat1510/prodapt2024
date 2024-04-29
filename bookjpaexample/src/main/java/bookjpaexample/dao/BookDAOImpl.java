@@ -91,4 +91,11 @@ public class BookDAOImpl implements BookDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Book> getAllBooksUsingNamedQuery() {
+		Query query = em.createNamedQuery("getAllBooksUsingNamedQuery");
+		
+		return query.getResultList();
+	}
+
 }

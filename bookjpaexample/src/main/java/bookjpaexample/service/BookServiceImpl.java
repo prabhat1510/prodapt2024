@@ -71,4 +71,10 @@ public class BookServiceImpl implements BookService {
 		
 	}
 
+	@Override
+	public List<Book> getAllBooksUsingNamedQuery() {
+		BookDAO dao = new BookDAOImpl();
+		return dao.getAllBooksUsingNamedQuery();
+	}
+
 }

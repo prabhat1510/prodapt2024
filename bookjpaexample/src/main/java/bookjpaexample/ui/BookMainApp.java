@@ -19,5 +19,7 @@ public class BookMainApp {
 		//service.getAllBooks();
 		Book b = service.getBookByName("Java Programming Languages");
 		System.out.println(b);
+		
+		System.out.println(service.getAllBooksUsingNamedQuery());
 	}
 }

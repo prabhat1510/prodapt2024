@@ -30,4 +30,6 @@ public interface BookDAO {
 		public void updateBookUsingNormalQuery(int id, String name);
 
 		public void updateBookUsingQuery(Book book);
+		
+		public List<Book> getAllBooksUsingNamedQuery();
 }	
