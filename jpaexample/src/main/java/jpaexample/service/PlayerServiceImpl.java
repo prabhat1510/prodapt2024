@@ -30,4 +30,10 @@ public class PlayerServiceImpl implements PlayerService {
 		return dao.deletePlayer(playerId);
 	}
 
+	@Override
+	public Player getPlayerByName(String name) {
+		PlayerDAO dao = new PlayerDAOImpl();
+		return dao.getPlayerByName(name);
+	}
+
 }

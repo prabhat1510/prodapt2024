@@ -13,4 +13,7 @@ public interface PlayerService {
 	//Delete
 	public String deletePlayer(Integer playerId);
 	
+	//Find by name
+	public Player getPlayerByName(String name);
+	
 }
