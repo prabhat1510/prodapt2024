@@ -22,6 +22,8 @@
 		<mapping class="jpaassociationexample.manytomany.Order"></mapping>
 		<mapping class="jpaassociationexample.stc.EmployeeSTC"></mapping>
 		<mapping class="jpaassociationexample.stc.ManagerSTC"></mapping>
+		<mapping class="jpaassociationexample.tpc.ManagerTPC"></mapping>
+		<mapping class="jpaassociationexample.tpc.EmployeeTPC"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
