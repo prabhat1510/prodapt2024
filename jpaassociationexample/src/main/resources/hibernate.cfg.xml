@@ -20,6 +20,8 @@
 		<mapping class="jpaassociationexample.onetomanybi.Employee"></mapping>
 		<mapping class="jpaassociationexample.manytomany.Product"></mapping>
 		<mapping class="jpaassociationexample.manytomany.Order"></mapping>
+		<mapping class="jpaassociationexample.stc.EmployeeSTC"></mapping>
+		<mapping class="jpaassociationexample.stc.ManagerSTC"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
