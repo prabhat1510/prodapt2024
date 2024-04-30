@@ -18,6 +18,8 @@
 		<mapping class="jpaassociationexample.onetoonebi.AddressBi"></mapping>
 		<mapping class="jpaassociationexample.onetomanybi.Department"></mapping>
 		<mapping class="jpaassociationexample.onetomanybi.Employee"></mapping>
+		<mapping class="jpaassociationexample.manytomany.Product"></mapping>
+		<mapping class="jpaassociationexample.manytomany.Order"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
