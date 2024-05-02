@@ -24,6 +24,8 @@
 		<mapping class="jpaassociationexample.stc.ManagerSTC"></mapping>
 		<mapping class="jpaassociationexample.tpc.ManagerTPC"></mapping>
 		<mapping class="jpaassociationexample.tpc.EmployeeTPC"></mapping>
+		<mapping class="jpaassociationexample.js.EmployeeJS"></mapping>
+		<mapping class="jpaassociationexample.js.ManagerJS"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
