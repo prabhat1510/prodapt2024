@@ -22,12 +22,21 @@ public class CustomerServlet extends HttpServlet{
 		Customer customer = customerService.getCustomerById(15);
 		req.setAttribute("customer",customer);
 		RequestDispatcher dispatcher =  req.getRequestDispatcher("customer.jsp");
+		dispatcher.forward(req, resp);
 }
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		CustomerService customerService = new CustomerServiceImpl();
-		Customer customer = customerService.addCustomer((Customer) req.getAttribute("customer"));
+		String customerName = req.getParameter("customerName");
+		
+		Customer cust = new Customer();
+		cust.setCustomerName(customerName);
+		
+		Customer customer = customerService.addCustomer(cust);
+		
 		req.setAttribute("customer",customer);
+		
 		RequestDispatcher dispatcher =  req.getRequestDispatcher("customer.jsp");
+		dispatcher.forward(req, resp);
 }
 }

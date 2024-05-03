@@ -13,7 +13,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public Customer addCustomer(Customer customer) {
 		session.beginTransaction();
-		session.save(customer);
+		session.persist(customer);
 		session.getTransaction().commit();
 		return customer;
 	}
