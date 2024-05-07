@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="customer" class="springcoreexamples.readingconfig.Customer">
+		<property name="customerName" value="Rohan Rajore"/>
+		<property name="customerId" value="15"/>
+		<!-- Below using property i am injecting the dependencies -->
+		<property name="homeAddress" ref="addrBean1"/>
+		<property name="resAddress" ref="addrBean2"/>
+	</bean>
+	<bean id="addrBean1" class="springcoreexamples.readingconfig.Address">
+		<property name="city" value="Pune"/>
+		<property name="state" value="Maharashtra"/>
+		<property name="country" value="India"/>
+		<property name="addressId" value="1"/>
+		
+	</bean>
+	
+	<bean id="addrBean2" class="springcoreexamples.readingconfig.Address">
+		<property name="city" value="Indore"/>
+		<property name="state" value="Madhya Pradesh"/>
+		<property name="country" value="India"/>
+		<property name="addressId" value="2"/>
+		
+	</bean>
+	
+	<bean id="person" class="springcoreexamples.readingconfig.Person">
+		<property name="personId" value="1" />
+		<property name="personName" value="Rahul" />
+	</bean>
+	<bean id="person1" class="springcoreexamples.readingconfig.Person">
+		<constructor-arg name="personId" value="2" />
+		<constructor-arg name="personName" value="Ram" />
+	</bean>
+	<!-- Reading data from data.properties file -->
+	 <!-- Configure PropertyPlaceholderConfigurer -->
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="location" value="classpath:data.properties"/>
+    </bean>
+    <bean id="person2" class="springcoreexamples.readingconfig.Person">
+		<constructor-arg name="personId" value="${id}" />
+		<constructor-arg name="personName" value="${name}" />
+	</bean>
+</beans>
