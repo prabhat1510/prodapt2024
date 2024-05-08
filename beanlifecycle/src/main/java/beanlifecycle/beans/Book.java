@@ -13,8 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-//@Component("bookBean")
-public class Book implements BeanPostProcessor, InitializingBean, DisposableBean, BeanFactoryAware,
+public class Book implements InitializingBean, DisposableBean, BeanFactoryAware,
 		ApplicationContextAware, BeanNameAware {
 	// Property or field of Book class
 	private String bookName;
@@ -67,20 +66,6 @@ public class Book implements BeanPostProcessor, InitializingBean, DisposableBean
 					+ Arrays.toString(applicationContext.getBeanDefinitionNames()));
 
 		}
-
-	// implementation of BeanPostProcessor method
-	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		System.out.println("Post Process Before Initialization method is called : Bean Name " + beanName+"   "+bean.toString()+"   "+bean.getClass());
-		return bean;
-	}
-
-	// implementation of BeanPostProcessor method
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		System.out.println("Post Process After Initialization method is called : Bean Name " + beanName +"   "+bean.toString()+"   "+bean.getClass());
-		return bean;
-	}
 
 	// implementation of BeanNameAware method
 	@Override
