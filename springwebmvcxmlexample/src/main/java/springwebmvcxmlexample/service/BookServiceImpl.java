@@ -8,19 +8,20 @@ import springwebmvcxmlexample.dto.BookDTO;
 
 @Service
 public class BookServiceImpl implements BookService {
-	
+
 	@Autowired
 	private BookDAO bookDAO;
+
 	@Override
 	public BookDTO addBook(BookDTO bookDTO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return bookDAO.addBook(bookDTO);
 	}
 
 	@Override
 	public BookDTO bookById(Integer bookId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return bookDAO.bookById(bookId);
 	}
 
 }
