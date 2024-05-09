@@ -12,7 +12,7 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">password</property>
 		<property name="show_sql">true</property>
-		<mapping class="springwebmvcxmlexample.dto.BookDTO"></mapping>
+		<mapping class="springwebmvcannotationexample.dto.BookDTO"></mapping>
 		
 		
 	</session-factory>

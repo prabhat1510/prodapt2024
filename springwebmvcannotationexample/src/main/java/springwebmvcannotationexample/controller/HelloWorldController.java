@@ -12,7 +12,7 @@ public class HelloWorldController {
 	public ModelAndView greetings() {
 		String model ="Hello How are you All ?";
 		ModelAndView mv = new ModelAndView();
-		mv.addObject(model);//setting data model 
+		mv.addObject("model",model);//setting data model 
 		mv.setViewName("greeting"); //name of the jsp is greeting.jsp
 		return mv;
 	}
