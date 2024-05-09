@@ -14,9 +14,9 @@ public class BookDAOImpl implements BookDAO {
 	@Override
 	public BookDTO addBook(BookDTO bookDTO) {
 		session.beginTransaction();
-		BookDTO bokDTO = session.get(BookDTO.class, bookDTO);
+		session.persist(bookDTO);
 		session.getTransaction().commit();
-		return bokDTO;
+		return bookDTO;
 	}
 
 	@Override
