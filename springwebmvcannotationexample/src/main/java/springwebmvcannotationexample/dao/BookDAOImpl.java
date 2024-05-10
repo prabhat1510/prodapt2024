@@ -23,6 +23,7 @@ public class BookDAOImpl implements BookDAO {
 	public BookDTO bookById(Integer bookId) {
 		session.beginTransaction();
 		BookDTO bookDTO = session.get(BookDTO.class, bookId);
+		session.getTransaction().commit();
 		return bookDTO;
 	}
 
