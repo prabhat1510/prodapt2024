@@ -1,10 +1,32 @@
 package springwebmvcannotationexample.service;
 
+import java.util.List;
+
 import springwebmvcannotationexample.dto.BookDTO;
+import springwebmvcannotationexample.exceptions.BookNotFoundException;
 
 public interface BookService {
-	//Create
+	// Create
 	public BookDTO addBook(BookDTO bookDTO);
-	//Retrieve
-	public BookDTO bookById(Integer bookId);
+
+	// Retrieve by Id
+	public BookDTO bookById(Integer bookId)  throws BookNotFoundException;
+	
+	// Retrieve by bookName
+	public BookDTO bookByName(String bookName) throws BookNotFoundException;
+	
+	// Retrieve By publisher
+	public List<BookDTO> bookByPublisher(String publisher) throws BookNotFoundException;
+
+	// All Books
+	public List<BookDTO> books() throws BookNotFoundException;
+
+	// Delete by bookId
+	public String deleteById(Integer bookId) throws BookNotFoundException;
+
+	// Delete by name
+	public String deleteByBookName(String bookName) throws BookNotFoundException;
+
+	// Update Book
+	public BookDTO updateBook(BookDTO bookDTO);
 }

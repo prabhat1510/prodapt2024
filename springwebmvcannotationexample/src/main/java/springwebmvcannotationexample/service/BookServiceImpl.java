@@ -1,10 +1,13 @@
 package springwebmvcannotationexample.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springwebmvcannotationexample.dao.BookDAO;
 import springwebmvcannotationexample.dto.BookDTO;
+import springwebmvcannotationexample.exceptions.BookNotFoundException;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -19,9 +22,41 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public BookDTO bookById(Integer bookId) {
-
+	public BookDTO bookById(Integer bookId) throws BookNotFoundException {
 		return bookDAO.bookById(bookId);
 	}
+
+	@Override
+	public BookDTO bookByName(String bookName) throws BookNotFoundException {
+		return bookDAO.bookByName(bookName);
+	}
+
+	@Override
+	public List<BookDTO> bookByPublisher(String publisher) throws BookNotFoundException {
+		return bookDAO.bookByPublisher(publisher);
+	}
+
+	@Override
+	public List<BookDTO> books() throws BookNotFoundException{
+		return bookDAO.books();
+	}
+
+	@Override
+	public String deleteById(Integer bookId) throws BookNotFoundException {
+		return bookDAO.deleteById(bookId);
+	}
+
+	@Override
+	public String deleteByBookName(String bookName) throws BookNotFoundException {
+		return bookDAO.deleteByBookName(bookName);
+	}
+
+	@Override
+	public BookDTO updateBook(BookDTO bookDTO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
