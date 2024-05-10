@@ -2,9 +2,11 @@ package springwebmvcannotationexample.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import springwebmvcannotationexample.dto.BookDTO;
@@ -45,9 +47,17 @@ public class BookController {
 			return mv;
 		}
 		
-		/**
+		
 		//Retrieve
-		public BookDTO bookById(Integer bookId) {
+		//URL - http://localhost:8080/springwebmvcannotationexample/bookapp/getbook?id=1
+		@GetMapping("/getbook")
+		public ModelAndView bookById(@RequestParam("id") Integer bookId) {
+			BookDTO bokDTO = service.bookById(bookId);
 			
-		}**/
+			ModelAndView mv = new ModelAndView();
+			////converting book dto to model and setting model in ModelAndView
+			mv.addObject("bookModel",BookUtility.convertBookDTOToBook(bokDTO));
+			mv.setViewName("bookdetails"); //setting view name or jsp name
+			return mv;
+		}
 }
