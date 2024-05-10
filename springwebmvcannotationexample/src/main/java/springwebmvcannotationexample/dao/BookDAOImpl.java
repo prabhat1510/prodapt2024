@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
 
+import jakarta.transaction.Transactional;
 import springwebmvcannotationexample.dto.BookDTO;
 import springwebmvcannotationexample.exceptions.BookNotFoundException;
 import springwebmvcannotationexample.utility.HibernateUtility;
@@ -15,18 +16,18 @@ public class BookDAOImpl implements BookDAO {
 	Session session = HibernateUtility.getSessionFactory().openSession();
 
 	@Override
+	@Transactional
 	public BookDTO addBook(BookDTO bookDTO) {
-		session.beginTransaction();
+
 		session.persist(bookDTO);
-		session.getTransaction().commit();
+
 		return bookDTO;
 	}
 
 	@Override
+	@Transactional
 	public BookDTO bookById(Integer bookId) throws BookNotFoundException {
-		session.beginTransaction();
 		BookDTO bookDTO = session.get(BookDTO.class, bookId);
-		session.getTransaction().commit();
 		if (bookDTO != null) {
 			return bookDTO;
 		} else {
@@ -36,10 +37,9 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
+	@Transactional
 	public BookDTO bookByName(String bookName) throws BookNotFoundException {
-		session.beginTransaction();
 		BookDTO bookDTO = session.get(BookDTO.class, bookName);
-		session.getTransaction().commit();
 		if (bookDTO != null) {
 			return bookDTO;
 		} else {
@@ -48,10 +48,9 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
+	@Transactional
 	public List<BookDTO> bookByPublisher(String publisher) throws BookNotFoundException {
-		session.beginTransaction();
 		List<BookDTO> listbookDTO = (List<BookDTO>) session.byMultipleIds(BookDTO.class);
-		session.getTransaction().commit();
 		if (listbookDTO != null && listbookDTO.size() > 0) {
 			return listbookDTO;
 		} else {
@@ -60,10 +59,10 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
+	@Transactional
 	public List<BookDTO> books() throws BookNotFoundException {
-		session.beginTransaction();
-		List<BookDTO> listbookDTO = (List<BookDTO>) session.byMultipleIds(BookDTO.class);
-		session.getTransaction().commit();
+		List<Integer> allIds = session.createQuery("SELECT bookId FROM BookDTO", Integer.class).list();
+		List<BookDTO> listbookDTO = session.byMultipleIds(BookDTO.class).multiLoad(allIds);
 		if (listbookDTO != null && listbookDTO.size() > 0) {
 			return listbookDTO;
 		} else {
@@ -72,29 +71,26 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
+	@Transactional
 	public String deleteById(Integer bookId) throws BookNotFoundException {
-		session.beginTransaction();
 		BookDTO bookDTO = session.get(BookDTO.class, bookId);
 		if (bookDTO != null) {
 			session.remove(bookDTO);
-			session.getTransaction().commit();
 			return "Book with bookId " + bookId + " deleted successfully";
 		} else {
-			session.getTransaction().commit();
 			throw new BookNotFoundException("Book with bookId " + bookId + " doesn't exists");
 		}
 	}
 
 	@Override
+	@Transactional
 	public String deleteByBookName(String bookName) throws BookNotFoundException {
-		session.beginTransaction();
+		
 		BookDTO bookDTO = session.get(BookDTO.class, bookName);
 		if (bookDTO != null) {
 			session.remove(bookDTO);
-			session.getTransaction().commit();
 			return "Book with bookName " + bookName + " deleted successfully";
 		} else {
-			session.getTransaction().commit();
 			throw new BookNotFoundException("Book with bookName " + bookName + " doesn't exists");
 		}
 	}

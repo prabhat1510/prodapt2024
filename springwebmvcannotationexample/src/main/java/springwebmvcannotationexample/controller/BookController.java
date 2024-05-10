@@ -1,5 +1,7 @@
 package springwebmvcannotationexample.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -100,6 +102,16 @@ public class BookController {
 			mv.addObject("errorMsg", errorMsg);
 			mv.setViewName("errormsg"); // name of the jsp is errormsg.jsp
 		}
+		return mv;
+	}
+	
+	//Get All Books
+	@GetMapping("/books")
+	public ModelAndView books() throws BookNotFoundException {
+		ModelAndView mv = new ModelAndView();
+		List<BookDTO> listOfBooks = service.books();
+		mv.addObject("bookList", listOfBooks);// setting data model
+		mv.setViewName("books"); // name of the jsp is greeting.jsp
 		return mv;
 	}
 }
