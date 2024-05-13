@@ -50,25 +50,30 @@ public class BookController {
 	// Retrieve
 	// URL -
 	// http://localhost:8080/springwebmvcannotationexample/bookapp/getbook?id=1
+	/**
+	 * @GetMapping("/getbook") public ModelAndView bookById(@RequestParam("id")
+	 * Integer bookId) { BookDTO bokDTO = null; String errorMsg = null;
+	 * 
+	 * try { bokDTO = service.bookById(bookId); } catch (BookNotFoundException e) {
+	 * errorMsg = e.getMessage(); }
+	 * 
+	 * ModelAndView mv = new ModelAndView(); if(bokDTO != null) { //// converting
+	 * book dto to model and setting model in ModelAndView mv.addObject("bookModel",
+	 * BookUtility.convertBookDTOToBook(bokDTO)); mv.setViewName("bookdetails"); //
+	 * setting view name or jsp name }else { mv.addObject("errorMsg", errorMsg);
+	 * mv.setViewName("errormsg"); // name of the jsp is errormsg.jsp } return mv; }
+	 **/
+	//Below exception handled by global exception handler class
 	@GetMapping("/getbook")
-	public ModelAndView bookById(@RequestParam("id") Integer bookId) {
-		BookDTO bokDTO = null; 
-		String errorMsg = null;
-		try {
-			bokDTO = service.bookById(bookId);
-		} catch (BookNotFoundException e) {
-			errorMsg = e.getMessage();
-		}
-		
+	public ModelAndView bookById(@RequestParam("id") Integer bookId) throws BookNotFoundException {
+		BookDTO bokDTO = service.bookById(bookId);
+
 		ModelAndView mv = new ModelAndView();
-		if(bokDTO != null) {
+
 		//// converting book dto to model and setting model in ModelAndView
-			mv.addObject("bookModel", BookUtility.convertBookDTOToBook(bokDTO));
-			mv.setViewName("bookdetails"); // setting view name or jsp name
-		}else {
-			mv.addObject("errorMsg", errorMsg);
-			mv.setViewName("errormsg"); // name of the jsp is errormsg.jsp
-		}
+		mv.addObject("bookModel", BookUtility.convertBookDTOToBook(bokDTO));
+		mv.setViewName("bookdetails"); // setting view name or jsp name
+
 		return mv;
 	}
 
@@ -93,19 +98,19 @@ public class BookController {
 		} catch (BookNotFoundException e) {
 			errorMsg = e.getMessage();
 		}
-		
+
 		ModelAndView mv = new ModelAndView();
-		if(bdto != null) {
-		mv.addObject("book", bok);// setting data model
-		mv.setViewName("getbookform"); // name of the jsp is greeting.jsp
-		}else {
+		if (bdto != null) {
+			mv.addObject("book", bok);// setting data model
+			mv.setViewName("getbookform"); // name of the jsp is greeting.jsp
+		} else {
 			mv.addObject("errorMsg", errorMsg);
 			mv.setViewName("errormsg"); // name of the jsp is errormsg.jsp
 		}
 		return mv;
 	}
-	
-	//Get All Books
+
+	// Get All Books
 	@GetMapping("/books")
 	public ModelAndView books() throws BookNotFoundException {
 		ModelAndView mv = new ModelAndView();

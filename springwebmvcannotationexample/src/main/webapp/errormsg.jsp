@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h2>${errorMsg}</h2>
+	<h3>${url}</h3>
 	
 
 </body>
