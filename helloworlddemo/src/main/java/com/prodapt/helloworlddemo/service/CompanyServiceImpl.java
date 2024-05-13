@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.prodapt.helloworlddemo.entities.Company;
+import com.prodapt.helloworlddemo.entities.CompanyDTO;
 import com.prodapt.helloworlddemo.exceptions.CompanyNotFoundException;
 import com.prodapt.helloworlddemo.exceptions.NoRecordFoundException;
 import com.prodapt.helloworlddemo.repositories.CompanyRepository;
@@ -18,8 +18,8 @@ public class CompanyServiceImpl implements CompanyService {
 	private CompanyRepository repo;
 
 	@Override
-	public String createCompany(Company company) {
-		Company comp = repo.save(company);
+	public String createCompany(CompanyDTO company) {
+		CompanyDTO comp = repo.save(company);
 		if (comp != null) {
 			return "Company added successfully";
 		} else {
@@ -28,8 +28,8 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public Company getCompanyById(Integer companyId) throws CompanyNotFoundException {
-		Optional<Company> company = repo.findById(companyId);
+	public CompanyDTO getCompanyById(Integer companyId) throws CompanyNotFoundException {
+		Optional<CompanyDTO> company = repo.findById(companyId);
 		if (company.isPresent()) {
 			return company.get();
 		}
@@ -37,8 +37,8 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public List<Company> companies() throws NoRecordFoundException {
-		List<Company> listOfCompany = (List<Company>) repo.findAll();
+	public List<CompanyDTO> companies() throws NoRecordFoundException {
+		List<CompanyDTO> listOfCompany = (List<CompanyDTO>) repo.findAll();
 		if (listOfCompany != null) {
 			return listOfCompany;
 		}
@@ -47,7 +47,7 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public String deleteCompanyById(Integer companyId) throws CompanyNotFoundException {
-		Optional<Company> comp = repo.findById(companyId);
+		Optional<CompanyDTO> comp = repo.findById(companyId);
 		if (comp.isPresent()) {
 			repo.deleteById(companyId);
 			return "Company with companyId " + companyId + " deleted successfully";
@@ -57,23 +57,23 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public Company updateCompany(Company company) throws CompanyNotFoundException {
-		Optional<Company> comp = repo.findById(company.getCompanyId());
+	public CompanyDTO updateCompany(CompanyDTO companyDTO) throws CompanyNotFoundException {
+		Optional<CompanyDTO> comp = repo.findById(companyDTO.getCompanyId());
 		if (comp.isPresent()) {
-			return repo.save(company);
+			return repo.save(companyDTO);
 		} else {
-			throw new CompanyNotFoundException("Company with companyId " + company.getCompanyId() + " doesn't exists");
+			throw new CompanyNotFoundException("Company with companyId " + companyDTO.getCompanyId() + " doesn't exists");
 		}
 	}
 
 	@Override
-	public List<Company> getCompanyByName(String name) throws CompanyNotFoundException {
+	public List<CompanyDTO> getCompanyByName(String name) throws CompanyNotFoundException {
 		
 		return repo.findByName(name);
 	}
 
 	@Override
-	public List<Company> getCompanyByCity(String city) throws NoRecordFoundException {
+	public List<CompanyDTO> getCompanyByCity(String city) throws NoRecordFoundException {
 		return repo.findByCity(city);
 	}
 

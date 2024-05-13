@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.prodapt.helloworlddemo.entities.Company;
+import com.prodapt.helloworlddemo.entities.CompanyDTO;
 
 @Repository
-public interface CompanyRepository extends CrudRepository<Company, Integer>{
+public interface CompanyRepository extends CrudRepository<CompanyDTO, Integer>{
 
-	public List<Company> findByName(String name);
-	public List<Company> findByCity(String city);
+	public List<CompanyDTO> findByName(String name);
+	public List<CompanyDTO> findByCity(String city);
 }
