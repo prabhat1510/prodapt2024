@@ -1,0 +1,32 @@
+2024-05-15T13:10:50.905+05:30  INFO 15260 --- [restapiexample] [restartedMain] c.p.r.RestapiexampleApplication          : Starting RestapiexampleApplication using Java 21.0.1 with PID 15260 (D:\prodapt2024workspace\restapiexample\target\classes started by UD SYSTEMS in D:\prodapt2024workspace\restapiexample)
+2024-05-15T13:10:50.907+05:30  INFO 15260 --- [restapiexample] [restartedMain] c.p.r.RestapiexampleApplication          : No active profile set, falling back to 1 default profile: "default"
+2024-05-15T13:10:50.946+05:30  INFO 15260 --- [restapiexample] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-15T13:10:50.947+05:30  INFO 15260 --- [restapiexample] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-15T13:10:51.402+05:30  INFO 15260 --- [restapiexample] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-15T13:10:51.438+05:30  INFO 15260 --- [restapiexample] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 2 JPA repository interfaces.
+2024-05-15T13:10:51.779+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-05-15T13:10:51.787+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-15T13:10:51.788+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-15T13:10:51.829+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-15T13:10:51.829+05:30  INFO 15260 --- [restapiexample] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 882 ms
+2024-05-15T13:10:51.931+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-15T13:10:51.977+05:30  INFO 15260 --- [restapiexample] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-15T13:10:52.002+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-15T13:10:52.162+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-15T13:10:52.183+05:30  INFO 15260 --- [restapiexample] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-15T13:10:52.452+05:30  INFO 15260 --- [restapiexample] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6c28add8
+2024-05-15T13:10:52.453+05:30  INFO 15260 --- [restapiexample] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-15T13:10:52.494+05:30  WARN 15260 --- [restapiexample] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-15T13:10:53.064+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-15T13:10:53.105+05:30  INFO 15260 --- [restapiexample] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-15T13:10:53.325+05:30  WARN 15260 --- [restapiexample] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-15T13:10:53.590+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-15T13:10:53.620+05:30  INFO 15260 --- [restapiexample] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2024-05-15T13:10:53.627+05:30  INFO 15260 --- [restapiexample] [restartedMain] c.p.r.RestapiexampleApplication          : Started RestapiexampleApplication in 2.97 seconds (process running for 3.444)
+2024-05-15T13:11:06.204+05:30  INFO 15260 --- [restapiexample] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-15T13:11:06.204+05:30  INFO 15260 --- [restapiexample] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-15T13:11:06.205+05:30  INFO 15260 --- [restapiexample] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-15T13:11:06.588+05:30  INFO 15260 --- [restapiexample] [http-nio-8081-exec-8] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 198 ms
+2024-05-15T13:11:16.572+05:30 ERROR 15260 --- [restapiexample] [http-nio-8081-exec-10] c.p.r.service.PersonServiceImpl          : Person with personId 156doesn't exists
+2024-05-15T13:11:16.575+05:30  WARN 15260 --- [restapiexample] [http-nio-8081-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.prodapt.restapiexample.exceptions.PersonNotFoundException: Person with personId 156doesn't exists]
+2024-05-15T13:12:23.221+05:30  INFO 15260 --- [restapiexample] [http-nio-8081-exec-3] c.p.r.service.PersonServiceImpl          : Person with person id 1 exists in record
