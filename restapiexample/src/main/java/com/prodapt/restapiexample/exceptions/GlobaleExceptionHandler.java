@@ -17,4 +17,14 @@ public class GlobaleExceptionHandler {
 	public ResponseEntity<String> handleAdressNotFoundException() {
 		return new ResponseEntity<String>("Address not found ",HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(MovieNotFoundException.class)
+	public ResponseEntity<String> handleMovieNotFoundException(MovieNotFoundException m) {
+		return new ResponseEntity<String>(m.getMessage(),HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(ActorNotFoundException.class)
+	public ResponseEntity<String> handleActorNotFoundException(ActorNotFoundException a) {
+		return new ResponseEntity<String>(a.getMessage(),HttpStatus.NOT_FOUND);
+	}
 }
