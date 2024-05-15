@@ -2,7 +2,7 @@ package com.prodapt.restapiexample.entities;
 
 import java.time.LocalDate;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,10 +28,10 @@ public class Person {
 	private Integer personId;
 	private String name;
 	private LocalDate dateOfBirth;
-	
+	 
 	//@ManyToOne(cascade = CascadeType.ALL)
 	//@JoinColumn(name = "addressId")
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
 	
 }
