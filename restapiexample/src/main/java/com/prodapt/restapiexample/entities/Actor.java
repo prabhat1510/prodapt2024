@@ -1,7 +1,10 @@
 package com.prodapt.restapiexample.entities;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -9,7 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,16 +27,16 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
-@Table(name="actor_details")
+@Table(name = "actor_master")
 public class Actor {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer actorId;
 	private String name;
+
 	
-	@JsonIgnoreProperties
-	@ManyToOne(cascade = CascadeType.ALL)//Owning side
-	@JoinColumn(name = "movieId")
-	@JsonBackReference
-	private Movie movie;
+	//@JsonManagedReference
+	@ManyToMany(mappedBy="actors")//inverse side
+	//@JsonIgnore
+	private Set<Movie> movies;
 }
