@@ -2,6 +2,7 @@ package com.prodapt.restapiexample.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
@@ -29,7 +30,7 @@ public class Movie {
 	private Integer movieId;
 	private String name;
 	private String rating;
-	
+	@JsonIgnoreProperties
 	@OneToMany(mappedBy = "movie")
 	@JsonManagedReference
 	private List<Actor> actors;//inverse side

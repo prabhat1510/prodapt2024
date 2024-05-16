@@ -17,6 +17,8 @@ import com.prodapt.restapiexample.exceptions.MovieNotFoundException;
 import com.prodapt.restapiexample.service.MovieService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
@@ -28,6 +30,10 @@ public class MovieController {
 	@Autowired
 	private MovieService service;
 
+	@ApiResponses(value = {
+			  @ApiResponse(responseCode = "302", description = "Found Movie"),
+			  @ApiResponse(responseCode = "400", description = "Bad request"),
+			  @ApiResponse(responseCode = "500", description = "Server Error")})
 	@Operation(summary = "Find Movie by Name")
 	@GetMapping("/movie")
 	public ResponseEntity<Movie> getMovieByName(@RequestParam("mname") String name) throws MovieNotFoundException {
@@ -38,6 +44,10 @@ public class MovieController {
 	}
 	
 	@Operation(summary = "Add Movie in App")
+	@ApiResponses(value = {
+			  @ApiResponse(responseCode = "201", description = "Created Movie"),
+			  @ApiResponse(responseCode = "400", description = "Bad request"),
+			  @ApiResponse(responseCode = "500", description = "Server Error")})
 	@PostMapping("/addmovie")
 	public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
 		logger.info("Inside addMovie +"+ MovieController.class.getName());
