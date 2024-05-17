@@ -35,10 +35,11 @@ public class Movie {
 	private String name;
 	private String rating;
 	
-	//@JsonBackReference
+	
 	
 	//@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "actor_movie_mapping", joinColumns = @JoinColumn(name = "movieId"), inverseJoinColumns = @JoinColumn(name = "actorId"))
+	
 	private Set<Actor> actors;//owning side
 }

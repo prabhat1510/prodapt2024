@@ -23,6 +23,7 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Getter
 @Setter
 @ToString
@@ -37,6 +38,7 @@ public class Actor {
 	
 	//@JsonManagedReference
 	@ManyToMany(mappedBy="actors")//inverse side
-	//@JsonIgnore
+	//  @JsonIgnore
+	@JsonBackReference
 	private Set<Movie> movies;
 }
