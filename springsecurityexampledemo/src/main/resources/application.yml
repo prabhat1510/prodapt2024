@@ -1,0 +1,19 @@
+server:
+  port: 9090
+spring: 
+  application:
+    name: springsecurityexampledemo
+  security:
+    user:
+      name: shalini
+      password: shalini
+  datasource:
+    url: jdbc:mysql://localhost:3306/restsecureapidb?createDatabaseIfNotExist=true
+    username: root
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        ddl-auto: update
+    show-sql: true
