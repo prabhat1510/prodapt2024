@@ -57,14 +57,16 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	public final static String[] PUBLIC_REQUEST_MATCHERS = { "/api/auth/**", "/api-docs/**", "/swagger-ui/**" };
+	public final static String[] PUBLIC_REQUEST_MATCHERS = { "/api/auth/**", "/api-docs/**", "/swagger-ui/**","/v3/api-docs/**" };
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors(AbstractHttpConfigurer :: disable).csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(req -> req.requestMatchers(PUBLIC_REQUEST_MATCHERS).permitAll()
-						.requestMatchers("/api/toyandbooklibapp/**").permitAll()
-						.anyRequest().authenticated())
+						//.requestMatchers("/api/toyandbooklibapp/**").permitAll())
+						.requestMatchers("/api/toyandbooklibapp/user").hasRole("USER")
+						.requestMatchers("/api/toyandbooklibapp/child").hasAnyRole("USER","CHILD"))
+						//.anyRequest().authenticated())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authenticationProvider(authenticationProvider())
 				.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

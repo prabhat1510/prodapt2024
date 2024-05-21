@@ -34,8 +34,10 @@ public class JwtUtils {
 
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-    return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
-        .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)).signWith(getSignInKey(),SignatureAlgorithm.HS512)
+    return Jwts.builder().setSubject((userPrincipal.getUsername()))
+    		.setIssuedAt(new Date())
+        .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+        .signWith(getSignInKey(),SignatureAlgorithm.HS512)
         .compact(); 
   }
 
