@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/toyandbooklibapp")
-//@SecurityRequirement(name = "springsecurityusingjwtexample")
+@SecurityRequirement(name = "BearerAuthentication")
 public class TestController {
 	@GetMapping("/all")
 	public String allAccess() {
