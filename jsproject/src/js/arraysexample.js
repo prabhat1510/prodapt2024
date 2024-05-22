@@ -92,7 +92,40 @@ const nums2 =[11,12,13,14,15];
 const numbersArray=nums.concat(nums1,nums2);
 console.log(numbersArray);
 const n = nums.concat(16);
-console.log(n);
+console.log(n); 
+console.log("*****************flat*****************************");
+/**
+ * Falttening an array is the process of reducing the dimensionality of an array.
+ * The flat() method creates a new array with sub-array elements concatenated to a specified path
+ */
+const myArr=[[1,20],[3,4],[5,6]];
+const newArr= myArr.flat();
+console.log(newArr);
+console.log(myArr[0][0]);
+console.log(myArr[0][1]);
 
 
+/**
+ * Splicing and Slicing of Arrays
+ * The splice() method adds new items to an array
+ * The slice() method slices out a piece of an array
+ */
 
+console.log(fruits);
+/**
+ * splice method in below example 
+ * first parameter(2) defines the position where new elements should be added(spliced in)
+ * second parameter(0) defines how many elements should be removed
+ * 
+ */
+fruits.splice(2,0,"Lemon","Orange");
+console.log(fruits);
+fruits.splice(2,1,"Guava","Berries");
+console.log(fruits);
+fruits.splice(0,1);//splice method is used here to remove 1 element from 0 index position 
+console.log(fruits);
+/**
+ * slice() method slices out a piece of an array into a new array
+ */
+const berry = fruits.slice(2);
+console.log(berry);
