@@ -3,21 +3,21 @@
 var a ="Karthik";// Global Scope
 function greet(){
     //variable a can be used here inside the function
-    //var a = "hello"; // Local Scope
+    var a = "hello"; // Local Scope
     //a = "hello"; // within function scope we are changing the value of varibale a 
     console.log("-----"+a +"---")
 }
 console.log(a);
 var a ="S ";
 greet();//hello
-
+console.log("************************************************************************")
 
 /**
  * let is block-scoped
  * The variable declared with let can only be accessed inside a block of code
  * 
  * let doesn't allow to redeclare variables
- */
+*/ 
 
 function greetings(){
     let msg="hello";
@@ -39,13 +39,13 @@ greetings();
  * 
  * In JS a variable can be declared after it has been used
  * 
- */
+*/ 
 
 //var variables are hoisted to the top of the scope of the program
 z=5;// Intialized or use it 
 console.log(z);// used
 var z; // declare it //undefined or 5 (not an error);
-
+console.log(z)
 //let doesn't allow hoisting
 console.log(m);
 let m; // m is not defined error

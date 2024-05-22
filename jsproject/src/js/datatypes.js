@@ -35,20 +35,65 @@ console.log(lastName);
 //Numbers
 let length = 16;
 let weight = 7.5;
-
+console.log("**************************");
+console.log(length instanceof Number);
+console.log(typeof(length));
+console.log(typeof(weight));
 //Strings
 let color = "Yellow";
 let lastname = "Srinivasmurthy";
-
+console.log("*********String*****************");
+console.log(color instanceof String);
+console.log(typeof(color));
+console.log(typeof(lastname));
 //Boolean
 let x = true;
 let y = false;
-
+console.log("*********Boolean*****************");
+console.log(typeof(x));
+console.log(typeof(y));
 //Object
 const person ={firstName: "Karthik" , lastName:"Srinivasmurthy"};
-
+console.log("*********Object*****************");
+console.log(person.firstName);
+console.log(person.lastName);
+console.log("*********Object const properties modified  *****************");
+person.firstName="Harish";
+person.lastName="Kumar";
+console.log(person.firstName);
+console.log(person.lastName);
+//person ={firstName: "Anand" , lastName:"K"};//Reassigning gives error for const type
+console.log(person.firstName);
+console.log(person.lastName);
 //Array object:
 const cars =["Volvo","BMW","Audi", "Toyota"];
+console.log(cars.length);
+for(let index=0;index<cars.length;index++){
+    console.log(cars[index])
+}
+console.log("********************forEach************************");
+for(car in cars){
+    console.log(car); //It prints index of array
+}
+
+console.log("********************forEach************************");
+for(let car in cars){
+    console.log(car); //It prints index of array
+}
+
+console.log("********************forEach************************");
+for(let car in cars){
+    console.log(cars[car]); //It prints elements of array
+}
+console.log("********************forEach************************");
+cars.forEach(console.log);
+console.log("********************forEach************************");
+cars.forEach(myFunction);
+
+
+function myFunction(item) {
+    console.log(item);
+  }
 
 //Date object
 const date = new Date("2023-04-22");
@@ -76,6 +121,4 @@ console.log(typeof(date));
 console.log(typeof(person));
 console.log(typeof(color));
 console.log(typeof(length));
-
-
 
