@@ -11,3 +11,19 @@ console.log(students);
 console.log(typeof(mixvalues));
 console.log(typeof(numbers));
 console.log(typeof(students));
+console.log("*********************************************")
+const persons=[];
+persons[0]="Rahul";
+persons[1]="Prabhat";
+
+const fruits= new Array("Mango","Apple","Banana");
+let fruit = fruits[0];
+console.log(fruit);
+console.log("*********************************************")
+//Loop to access all items from array fruits
+for(let f in fruits){
+    if(fruits[f] == "Mango"){
+        console.log("Mango fruit is present in an array");
+    }
+    console.log(fruits[f]);
+}
