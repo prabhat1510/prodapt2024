@@ -32,3 +32,16 @@ function division(a,b,myCallback){
     myCallback(res);//call to callback function
 }
 division(4,2,displayResult); //calling the function 
+
+//Below line arrow function (i.e. call back function)is used to pass as an argument
+division(10,2,(m)=>{console.log("Division of 10 and 2 is ---"+m)}); 
+
+
+const add = (x,y)=>x+y;
+console.log(add(10,5));
+
+const display=()=>{
+    console.log("Inside display method");
+    console.log("5"+"10");
+}
+display();
