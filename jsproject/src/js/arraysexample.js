@@ -118,6 +118,7 @@ console.log(fruits);
  * second parameter(0) defines how many elements should be removed
  * 
  */
+
 fruits.splice(2,0,"Lemon","Orange");
 console.log(fruits);
 fruits.splice(2,1,"Guava","Berries");
@@ -129,3 +130,22 @@ console.log(fruits);
  */
 const berry = fruits.slice(2);
 console.log(berry);
+
+
+let indexOfOrange= fruits.indexOf('Orange');
+if(indexOfOrange > -1){
+    fruits.splice(indexOfOrange,1);
+}
+console.log(fruits);
+
+const kiwi = fruits.slice(3,4);
+console.log(kiwi);
+/**
+ * The method selects elements from the start argument, and up to 
+ * (but not including the end argument)
+ */
+const ki = fruits.slice(3,5);
+console.log(ki);
+console.log(fruits);
+console.log(fruits.sort());
+console.log(fruits.reverse());
