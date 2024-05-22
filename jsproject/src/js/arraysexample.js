@@ -70,5 +70,29 @@ fruits.push("Kiwi");
 fruits.push("Chickoo");
 console.log(fruits);
 
+console.log("********************shifting elements*************************");
+/**
+ * Shifting is equivalent to popping, but working on the first element instead of the last.
+ */
+//shift() method removes the first array element and shifts all other elements to a lower index.
+fruits.shift();
+console.log(fruits);
+//unshift method adds a new element to an array(at the begining) and "unshifts" older elements
+fruits.unshift("Papaya");
+console.log(fruits);
+console.log("*******************concat two arrays**********************");
+const cars =["Audi","Benz","Volvo"];
+const bikes=["Ducati","BMW","Honda","Suzuki"];
+const vehicles= cars.concat(bikes);
+console.log(vehicles);
+
+const nums =[1,2,3,4,5];
+const nums1 =[6,7,8,9,10];
+const nums2 =[11,12,13,14,15];
+const numbersArray=nums.concat(nums1,nums2);
+console.log(numbersArray);
+const n = nums.concat(16);
+console.log(n);
+
 
 
