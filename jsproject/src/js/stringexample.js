@@ -53,3 +53,53 @@ console.log("***************************");
 let texts ="Hello \
 Karthik";
 console.log(texts);
+
+/**
+ * JS Strings as Object
+ * new String()
+ */
+
+let name = new String("Karthik");
+let n= "Karthik";
+console.log(typeof(name));
+console.log(name instanceof String);
+console.log(typeof(n));
+//=== is the strict equality comparison operator
+console.log(name === n); //false here name and n are not equal
+//== is the abstract equality comparison operator or loosley equality comparator
+console.log(name == n);
+
+
+/***
+ * It is know as loose equality operator because it checks abstract equality i.e.
+ * it tends to convert the data types of operands in order to carry the comparison
+ * when two operands aren't of the same data type.
+ * 
+ * != checks whether two values are not equal
+ * == checks whether two values are not equal
+ * x == y
+ * x != y
+ *  
+ * */  
+console.log("******************************");
+let a = 10;
+let b = '10';
+console.log(typeof(b));
+console.log(a == b); // output is true
+console.log("******************************");
+let c ='abc';
+console.log(typeof(c));
+console.log(b == c);// output is false
+
+
+/**
+ * === compares operand and returns true if both operands are of the same data type and have some value
+ * otherwise, it returns false
+ */
+console.log(b === c);
+console.log(b === a);
+let d ='def';
+console.log(typeof(c));
+console.log(typeof(d));
+console.log(c === d);
+console.log("******************************");
