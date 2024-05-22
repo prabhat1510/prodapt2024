@@ -42,3 +42,33 @@ console.log(fruits);
 fruits[1]="Melon";
 console.log(fruits);
 
+
+/**
+ * JS Arrays methods
+ *
+ */
+//toString()
+console.log(fruits.toString());
+
+//join() -- it joins all array elements to a string
+console.log(fruits.join("*"));
+let fr = fruits.join("*");
+console.log(fr);
+console.log(fruits);
+
+
+//Popping and Pushing
+//Remove elements and add new elements
+//pop() method removes the last element from an array
+fruits.pop();
+console.log(fruits);
+console.log("*********************************************");
+fruits.pop(1);
+console.log(fruits);
+console.log("********************push()*************************");
+fruits.push("Kiwi");
+fruits.push("Chickoo");
+console.log(fruits);
+
+
+
