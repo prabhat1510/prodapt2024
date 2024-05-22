@@ -4,3 +4,31 @@
  * This allows a function to call another function. 
  * It can run after another function has finished.
  */
+
+function addition(num1,num2){
+    let sum = num1+num2;
+    console.log("Sum of two numbers is "+sum);
+    return sum;
+}
+function multiply(x,y){
+    console.log("Multiplication of two numbers is ---"+x*y);
+    addition(x,y);//Calling another function
+    return x*y;
+}
+
+let result = multiply(2,4);
+console.log("Result is ---"+result);
+
+
+//Call Back to display the result in  console
+function displayResult(r){
+    console.log("Result of division is ---"+ r);
+}
+
+//Actual function which accepts callback function as an argument
+function division(a,b,myCallback){
+    let res = a/b;
+    console.log("Inside division function");
+    myCallback(res);//call to callback function
+}
+division(4,2,displayResult); //calling the function 
