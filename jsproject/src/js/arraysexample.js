@@ -25,5 +25,20 @@ for(let f in fruits){
     if(fruits[f] == "Mango"){
         console.log("Mango fruit is present in an array");
     }
-    console.log(fruits[f]);
+    console.log(fruits[f]); 
+
 }
+
+
+console.log("*********************************************")
+console.log(fruits);
+console.log("***************Length******************************")
+console.log(fruits.length);
+console.log("*********************************************")
+console.log(fruits[fruits.length -1]);
+console.log("***********************Adding an new item in an array**********************")
+fruits[3]="Pears";
+console.log(fruits);
+fruits[1]="Melon";
+console.log(fruits);
+
