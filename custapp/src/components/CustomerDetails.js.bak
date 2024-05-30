@@ -1,0 +1,38 @@
+//import {useState} from 'react';
+const CustomerDetails =(props)=>{
+//function CustomerDetails(props){
+    //console.log(props.data);    
+//console.log(props.data.firstName);
+    console.log(props.firstName);
+    /**const [cust,setCust] =useState(
+        {
+            id:"",
+            email:"",
+            firstName:"",
+            lastName:"",
+        }
+    );
+
+    const refreshHandler = e=>{
+        e.preventDefault();
+        setCust(props
+        );
+ 
+        console.log(cust);
+    }**/
+    return (
+        <>      
+                {/**<form onSubmit={refreshHandler}>
+                <button type="submit" class="btn btn-primary">Refresh</button>
+    </form>**/}
+                <h1>Customer Details</h1>
+                <label>ID : </label>{props.id}<br />
+                <label>First Name : </label><div>{props.firstName}</div><br />
+                <label>Last Name : </label><div>{props.lastName}</div><br />
+                <label>Email : </label><div>{props.email}</div><br />
+        </>
+        
+    );
+}
+
+export default CustomerDetails;

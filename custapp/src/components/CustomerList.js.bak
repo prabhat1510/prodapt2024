@@ -1,0 +1,71 @@
+import customers from '../customers.json';
+import CustomerDetails from './CustomerDetails';
+import CustomerForm from './CustomerForm';
+function CustomerList(props) {
+    let custs = customers;
+    //Todo props to custs
+    //console.log(typeof(customers));
+    //console.log(typeof(custs));
+    //console.log(custs);
+    //console.log(customers);
+    let custt;
+    const onCustomerSelect =(e,customer) =>{
+        //CustomerDetails(customer);
+        custt=customer;
+        console.log(customer);
+        console.log(custt);
+        
+    }
+    
+    const tabRows = custs.map((cust,i)=>{
+        return(
+            <tr onClick={ e=> onCustomerSelect(e,cust)} key={1} >
+                <td>{cust.id}</td>
+                <td>{cust.firstName}</td>
+                <td>{cust.lastName}</td>
+                <td>{cust.email}</td>
+            </tr>
+        );
+    });
+    
+    return ( 
+        
+        <div>
+        <h1>Customer List</h1>
+        <table class="table table-hover table-bordered table-sm">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                First Name
+                            </th>
+                            <th>
+                            Last Name
+                            </th>
+                            <th>
+                            Email
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tabRows}
+                    </tbody>
+                </table>
+        
+        <div class="row">
+        <div class="col-md-6">
+            <CustomerForm />
+        </div>
+        <div class="col-md-6">
+            <CustomerDetails data={custt}/>
+        </div>
+        </div>
+    </div>    
+    );
+    
+}
+
+
+export default CustomerList;
