@@ -12,10 +12,12 @@ export default function CustomerForm(){
 
 const {id,email,firstName,lastName}=custData;//destructuring
 if(location.state != null){
-    id=location.state.id;
+   /**id=location.state.id;
     email=location.state.email;
     firstName=location.state.firstName;
-    lastName=location.state.lastName;
+    lastName=location.state.lastName; */ 
+    //setCustData(location.state);
+
 }
 let counterForId=0;
 const changeHandler = e=>{

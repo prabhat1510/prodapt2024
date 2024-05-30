@@ -8,12 +8,12 @@ function CustomerList(props) {
     
 const navigate = useNavigate();//Hook function
 //let custt;
-const toCustomerDetails=(customer)=>{
+const onShowSelect=(customer)=>{
     navigate('/customerdetails',{state:customer});
   };
 
-  const toCustomerFormEditAndDelete=(customer)=>{
-    navigate('/addCustomer',{state:customer});
+  const onEditAndDeleteSelect=(customer)=>{
+    navigate('/deletecustomer',{state:customer});
   };
 
 
@@ -28,14 +28,14 @@ const toCustomerDetails=(customer)=>{
         
         
     } */
-
+/**
     const onShowSelect=(e,customer)=>{
         toCustomerDetails(customer);
-    }
+    } 
     
     const onEditAndDeleteSelect=(e,customer)=>{
         toCustomerFormEditAndDelete(customer);
-    }
+    }*/
     const tabRows = custs.map((cust,i)=>{
         return(
            
@@ -44,7 +44,7 @@ const toCustomerDetails=(customer)=>{
                 <td>{cust.firstName}</td>
                 <td>{cust.lastName}</td>
                 <td>{cust.email}</td>
-                <td><Link onClick={onShowSelect()} to ={"/customerdetails"}>show</Link> <Link to ={onEditAndDeleteSelect()}> edit</Link> <Link to ={onEditAndDeleteSelect()} >delete</Link></td>
+                <td><Link to ="/customerdetails" state={{cust}}>show</Link> <br /><Link to ={onEditAndDeleteSelect(cust)}> edit</Link> <Link to ={onEditAndDeleteSelect(cust)} >delete</Link></td>
             </tr>
         );
     });

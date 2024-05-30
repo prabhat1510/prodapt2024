@@ -1,0 +1,26 @@
+[
+{
+    "id":1,
+    "name":"Prajawal",
+    "email":"prajwal@gmail.com",
+    "phone":999911111
+},
+{
+    "id":2,
+    "name":"Jasal",
+    "email":"jasal@gmail.com",
+    "phone":999911112
+},
+{
+    "id":3,
+    "name":"Aman",
+    "email":"aman@gmail.com",
+    "phone":999911122
+},
+{
+    "id":4,
+    "name":"Krishna",
+    "email":"krishna@gmail.com",
+    "phone":999911144
+}
+]

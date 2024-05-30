@@ -8,6 +8,7 @@ import UserRegistration from "./components/UserRegistration";
 import CustomerForm from "./components/CustomerForm";
 import CustomerDetails from "./components/CustomerDetails";
 import CustomerList from "./components/CustomerList";
+import DeleteCustomer from "./components/DeleteCustomer";
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 
 function  App () {
@@ -23,6 +24,7 @@ function  App () {
                         <Route path="/addCustomer" element={<CustomerForm />}  />
                         <Route path="/customerdetails" element={<CustomerDetails />}  />
                         <Route path="/customers" element={<CustomerList />}  />
+                        <Route path="/deletecustomer" element={<DeleteCustomer />}  />
             </Routes>
             </BrowserRouter>
          
