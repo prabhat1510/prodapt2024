@@ -20,13 +20,14 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 public class SwaggerOpenApiConfig {
 	@Bean
 	public OpenAPI springOpenAPI() {
-		// final String securitySchemeName = "bearerAuth";
+		//final String securitySchemeName = "bearerAuth";
+		final String securitySchemeName="BearerAuthentication";
 		return new OpenAPI()
 				// defining security scheme
-				.components(new Components().addSecuritySchemes("BearerAuthentication",
+				.components(new Components().addSecuritySchemes(securitySchemeName,
 						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
 				// setting global security
-				.security(List.of(new SecurityRequirement().addList("BearerAuthentication")))
+				.security(List.of(new SecurityRequirement().addList(securitySchemeName)))
 				.info(new Info().title("SpringBoot API").description("Spring JWT Security application")
 						.version("v0.0.1").license(new License().name("Apache 2.0").url("http://springdoc.org")))
 				.externalDocs(new ExternalDocumentation().description("SpringBoot Wiki Documentation")
